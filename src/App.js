@@ -37,6 +37,8 @@ function App() {
     weights[date] = kgValue;
 
     localStorage.setItem("weights", JSON.stringify(weights));
+
+    alert("Submitted!");
   };
 
   return (
