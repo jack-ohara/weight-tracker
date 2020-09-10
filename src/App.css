@@ -1,0 +1,76 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #282c34;
+  color: white;
+}
+
+.App-header {
+  font-size: calc(10px + 2vmin);
+}
+
+.weight-input {
+  flex-grow: 1;
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weight-input .inputs {
+  text-align: left;
+}
+
+.weight-input .weight-select {
+  display: flex;
+  flex-direction: row;
+}
+
+.weight-input input,
+.weight-input select {
+  font-size: 0.75em;
+}
+
+.weight-input input[type="number"],
+.weight-input input[type="date"],
+.weight-input select {
+  border-radius: 3px;
+  border: 1px solid black;
+}
+
+.weight-input input[type="date"] {
+  margin-bottom: 0.5em;
+  padding: 0.3em 0.1em;
+}
+
+.weight-input input[type="number"] {
+  margin-right: 0.5em;
+}
+
+.weight-input input[type="submit"] {
+  margin-top: 0.5em;
+}
+
+.weight-input label {
+  text-align: left;
+}
+
+.App-link {
+  color: #61dafb;
+}
