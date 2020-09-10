@@ -18,18 +18,18 @@ function App() {
     //setDate(getTodaysDate());
   }, []);
 
-  const getTodaysDate = () => {
-    const date = new Date();
+  // const getTodaysDate = () => {
+  //   const date = new Date();
 
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-  };
+  //   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+  // };
 
   const onSubmit = (event) => {
     event.preventDefault();
 
     let kgValue = weightValue;
 
-    if (weightUnit == "lb") {
+    if (weightUnit === "lb") {
       kgValue = weightValue / 2.20462;
     }
 
