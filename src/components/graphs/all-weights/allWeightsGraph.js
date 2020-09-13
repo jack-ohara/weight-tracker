@@ -25,19 +25,12 @@ export const AllWeightsGraph = () => {
     setData(sortedDate);
   }, []);
 
-  const minWeightLimit =
-    Math.round(Math.min(...data.map((e) => parseFloat(e['weight'])))) - 3;
-
   const getDataMin = (dataMin) => {
     return Math.floor(dataMin);
   };
 
   const getDataMax = (dataMax) => {
     return Math.ceil(dataMax);
-  };
-
-  const renderTooltip = (payloadData) => {
-    return payloadData;
   };
 
   return (
