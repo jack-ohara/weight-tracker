@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
   CartesianGrid,
-  Legend,
   Line,
   LineChart,
   Tooltip,
@@ -13,7 +12,7 @@ export const AllWeightsGraph = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    const weights = JSON.parse(localStorage.getItem('weights') ?? {});
+    const weights = JSON.parse(localStorage.getItem('weights')) ?? {};
 
     const cleanedData = [];
 
