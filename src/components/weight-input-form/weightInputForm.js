@@ -67,7 +67,7 @@ export const WeightInputForm = () => {
 
     localStorage.setItem('weights', JSON.stringify(cleanedData));
 
-    alert('Submitted!');
+    window.location.reload();
   };
 
   return (

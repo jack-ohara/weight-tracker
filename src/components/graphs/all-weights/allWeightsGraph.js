@@ -7,6 +7,7 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
+import styled from 'styled-components';
 import { cleanData } from '../../weight-input-form/weightInputForm';
 
 export const AllWeightsGraph = () => {
@@ -17,18 +18,26 @@ export const AllWeightsGraph = () => {
 
     const cleanedData = cleanData(weights);
 
-    setData(cleanedData);
+    const sortedDate = cleanedData.sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+
+    setData(sortedDate);
   }, []);
 
   const minWeightLimit =
     Math.round(Math.min(...data.map((e) => parseFloat(e['weight'])))) - 3;
 
   const getDataMin = (dataMin) => {
-    return Math.round(dataMin) - 1;
+    return Math.floor(dataMin);
   };
 
   const getDataMax = (dataMax) => {
-    return Math.round(dataMax) + 1;
+    return Math.ceil(dataMax);
+  };
+
+  const renderTooltip = (payloadData) => {
+    return payloadData;
   };
 
   return (
@@ -37,13 +46,29 @@ export const AllWeightsGraph = () => {
       <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
       <XAxis dataKey="date" />
       <YAxis unit="Kg" type="number" domain={[getDataMin, getDataMax]} />
-      <Tooltip
-        formatter={(value, name, _props) => {
-          const formattedValue = `${value}Kg`;
-          const formattedName = `${name[0].toUpperCase()}${name.slice(1)}`;
-          return [formattedValue, formattedName];
-        }}
-      />
+      <Tooltip content={<CustomTooltip />} />
     </LineChart>
   );
+};
+
+const CustomTooltip = ({ active, payload, label }) => {
+  const Container = styled.div`
+    background: #c6c6c67d;
+    padding: 0.1em 0.2em;
+    border-radius: 3px;
+    color: black;
+  `;
+
+  if (active) {
+    const dateData = label.split('-');
+    const date = `${dateData[2]}/${dateData[1]}/${dateData[0]}`;
+
+    return (
+      <Container>
+        <p className="label">{`${date}: ${payload[0].value}Kg`}</p>
+      </Container>
+    );
+  }
+
+  return null;
 };
