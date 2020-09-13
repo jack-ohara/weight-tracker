@@ -37,38 +37,35 @@ const NumberInput = styled.input`
   margin-right: 0.5em;
 `;
 
-const Select = styled.select`
-  font-size: 0.75em;
-  border-radius: 3px;
-  border: 1px solid black;
-`;
-
 const SubmitButton = styled.input`
   font-size: 0.75em;
   margin-top: 0.5em;
 `;
 
+export const cleanData = (currnetData) => {
+  if (Array.isArray(currnetData)) {
+    return currnetData;
+  }
+
+  return Object.entries(currnetData).map((entry) => {
+    return { date: entry[0], weight: entry[1] };
+  });
+};
+
 export const WeightInputForm = () => {
   const [date, setDate] = useState('');
   const [weightValue, setWeightValue] = useState();
-  const [weightUnit, setWeightUnit] = useState(
-    localStorage.getItem('weightUnit')
-  );
 
   const onSubmit = (event) => {
     event.preventDefault();
 
-    let kgValue = weightValue;
-
-    if (weightUnit === 'lb') {
-      kgValue = weightValue / 2.20462;
-    }
-
     const weights = JSON.parse(localStorage.getItem('weights')) ?? {};
 
-    weights[date] = kgValue;
+    const cleanedData = cleanData(weights);
 
-    localStorage.setItem('weights', JSON.stringify(weights));
+    cleanedData.push({ date: date, weight: weightValue });
+
+    localStorage.setItem('weights', JSON.stringify(cleanedData));
 
     alert('Submitted!');
   };
@@ -95,18 +92,7 @@ export const WeightInputForm = () => {
               setWeightValue(e.target.value);
             }}
           />
-
-          <Select
-            name="unit"
-            id="unit"
-            value={weightUnit}
-            onChange={(e) => {
-              setWeightUnit(e.target.value);
-              localStorage.setItem('weightUnit', e.target.value);
-            }}>
-            <option value="kg">Kg</option>
-            <option value="lb">lb</option>
-          </Select>
+          Kg
         </WeightSelectArea>
       </InputArea>
 
