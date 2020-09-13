@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import './App.css';
+import { Graphs } from './components/graphs/graphs';
 import { WeightInputForm } from './components/weight-input-form/weightInputForm';
 
 const Container = styled.div`
@@ -26,6 +27,8 @@ const App = () => {
       </AppHeader>
 
       <WeightInputForm />
+
+      <Graphs />
     </Container>
   );
 };
