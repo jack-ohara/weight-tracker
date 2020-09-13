@@ -1,19 +1,15 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Jack's Weight Tracker",
+  "name": "A simple, secure weight tracking app",
+  "description": "A weight tracking app that doesn't require an account to work. Everything is stored on your device",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    },
-    {
-      "src": "logo192.png",
+      "src": "logo192.svg",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo512.svg",
       "type": "image/png",
       "sizes": "512x512"
     }
