@@ -52,9 +52,13 @@ const CustomTooltip = ({ active, payload, label }) => {
     color: black;
   `;
 
-  if (active) {
-    const dateData = label.split('-');
-    const date = `${dateData[2]}/${dateData[1]}/${dateData[0]}`;
+  if (active && label && payload) {
+    let date = label;
+
+    if (label) {
+      const dateData = label.split('-');
+      date = `${dateData[2]}/${dateData[1]}/${dateData[0]}`;
+    }
 
     return (
       <Container>
