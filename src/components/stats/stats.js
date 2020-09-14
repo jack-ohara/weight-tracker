@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
-import { AllWeightsGraph } from './all-weights/allWeightsGraph';
+import { LastSevenDays } from './last-seven-days/lastSevenDays';
 
 const Container = styled.section`
-  flex-grow: 2;
+  flex-grow: 1;
 `;
 
-export const Graphs = () => {
+export const Stats = () => {
   return (
     <Container>
-      <AllWeightsGraph />
+      <LastSevenDays />
     </Container>
   );
 };

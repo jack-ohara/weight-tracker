@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { AddNewWeight } from '../../data-acccess/weightAccess';
 
 const InputForm = styled.form`
-  flex-grow: 1;
+  flex-grow: 5;
   font-size: 1.5em;
   display: flex;
   flex-direction: column;
@@ -42,32 +43,14 @@ const SubmitButton = styled.input`
   margin-top: 0.5em;
 `;
 
-export const cleanData = (currnetData) => {
-  if (Array.isArray(currnetData)) {
-    return currnetData;
-  }
-
-  return Object.entries(currnetData).map((entry) => {
-    return { date: entry[0], weight: entry[1] };
-  });
-};
-
 export const WeightInputForm = () => {
   const [date, setDate] = useState('');
-  const [weightValue, setWeightValue] = useState();
+  const [weight, setWeight] = useState();
 
   const onSubmit = (event) => {
     event.preventDefault();
 
-    const weights = JSON.parse(localStorage.getItem('weights')) ?? {};
-
-    const cleanedData = cleanData(weights);
-
-    cleanedData.push({ date: date, weight: weightValue });
-
-    localStorage.setItem('weights', JSON.stringify(cleanedData));
-
-    window.location.reload();
+    AddNewWeight(date, weight);
   };
 
   return (
@@ -87,16 +70,16 @@ export const WeightInputForm = () => {
             step="0.1"
             name="weight"
             id="weight"
-            value={weightValue}
+            value={weight}
             onChange={(e) => {
-              setWeightValue(e.target.value);
+              setWeight(e.target.value);
             }}
           />
           Kg
         </WeightSelectArea>
       </InputArea>
 
-      <SubmitButton type="Submit" value="Submit" />
+      <SubmitButton type="Submit" value="Submit" readOnly />
     </InputForm>
   );
 };
