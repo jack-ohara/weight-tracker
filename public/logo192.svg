@@ -8,7 +8,7 @@
  </g>
  <g>
   <title>Layer 1</title>
-  <rect x="6" y="22" rx="10" id="svg_1" height="165.99997" width="179" stroke-width="2" stroke="#ffffff" fill="#282c34"/>
+  <rect x="13" y="22" rx="10" id="svg_1" height="165.99997" width="179" stroke="none" fill="#282c34"/>
   <rect rx="10" id="svg_2" height="53" width="109" y="2.95001" x="42.5" stroke-width="1.5" stroke="#ffffff" fill="#282c34"/>
   <text transform="matrix(1.30103, 0, 0, 1.18086, -319.795, -123.18)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="24" id="svg_3" y="136.46086" x="290.5153" stroke-width="0" stroke="#ffffff" fill="#ffffff">51.4</text>
   <text transform="matrix(1.94032, 0, 0, 1.70015, -417.728, -189.105)" xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="9" id="svg_4" y="133.82891" x="277.85839" stroke-width="0" stroke="#ffffff" fill="#ffffff">Kg</text>
