@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AddNewWeight } from '../../data-acccess/weightAccess';
 
 const InputForm = styled.form`
-  flex-grow: 1;
+  flex-grow: 5;
   font-size: 1.5em;
   display: flex;
   flex-direction: column;

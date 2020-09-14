@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { AllWeightsGraph } from './all-weights/allWeightsGraph';
 
 const Container = styled.section`
-  flex-grow: 1;
+  flex-grow: 2;
 `;
 
 export const Graphs = () => {
