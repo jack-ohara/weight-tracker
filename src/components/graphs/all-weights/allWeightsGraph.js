@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import {
   CartesianGrid,
   Line,
@@ -8,23 +8,18 @@ import {
   YAxis,
 } from 'recharts';
 import styled from 'styled-components';
-import { cleanData } from '../../weight-input-form/weightInputForm';
+import { GetWeights } from '../../../data-acccess/weightAccess';
+
+const GraphContainer = styled.section``;
+
+const ToolTipContainer = styled.div`
+  background: #c6c6c67d;
+  padding: 0.1em 0.2em;
+  border-radius: 3px;
+  color: black;
+`;
 
 export const AllWeightsGraph = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const weights = JSON.parse(localStorage.getItem('weights')) ?? {};
-
-    const cleanedData = cleanData(weights);
-
-    const sortedDate = cleanedData.sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
-
-    setData(sortedDate);
-  }, []);
-
   const getDataMin = (dataMin) => {
     return Math.floor(dataMin);
   };
@@ -34,24 +29,19 @@ export const AllWeightsGraph = () => {
   };
 
   return (
-    <LineChart width={360} height={200} data={data}>
-      <Line type="monotone" dataKey="weight" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey="date" />
-      <YAxis unit="Kg" type="number" domain={[getDataMin, getDataMax]} />
-      <Tooltip content={<CustomTooltip />} />
-    </LineChart>
+    <GraphContainer>
+      <LineChart width={360} height={200} data={GetWeights()}>
+        <Line type="monotone" dataKey="weight" stroke="#8884d8" />
+        <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+        <XAxis dataKey="date" />
+        <YAxis unit="Kg" type="number" domain={[getDataMin, getDataMax]} />
+        <Tooltip content={<CustomTooltip />} />
+      </LineChart>
+    </GraphContainer>
   );
 };
 
 const CustomTooltip = ({ active, payload, label }) => {
-  const Container = styled.div`
-    background: #c6c6c67d;
-    padding: 0.1em 0.2em;
-    border-radius: 3px;
-    color: black;
-  `;
-
   if (active && label && payload) {
     let date = label;
 
@@ -61,9 +51,9 @@ const CustomTooltip = ({ active, payload, label }) => {
     }
 
     return (
-      <Container>
+      <ToolTipContainer>
         <p className="label">{`${date}: ${payload[0].value}Kg`}</p>
-      </Container>
+      </ToolTipContainer>
     );
   }
 
