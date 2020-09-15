@@ -14,26 +14,40 @@ export const LastSevenDays = () => {
   const [sevenDayDelta, setSevenDaysDelta] = useState('0Kg');
   const [isNegative, setIsNegative] = useState(true);
 
+  const getDateSevenDaysAgo = () => {
+    let date = new Date();
+
+    date.setDate(date.getDate() - 7);
+
+    return date;
+  };
+
   useEffect(() => {
     const weights = GetWeights();
 
-    const lastSevenDays = weights
-      .slice(weights.length - 7)
-      .map((e) => e.weight);
+    let dateSevenDaysAgo = getDateSevenDaysAgo();
 
-    const deltaNumber = lastSevenDays[6] - lastSevenDays[0];
+    const index = weights.findIndex(
+      (e) => new Date(e.date) >= dateSevenDaysAgo
+    );
 
     let deltaString;
 
-    if (deltaNumber > 0) {
-      deltaString = `+${deltaNumber.toFixed(2)}Kg`;
-      setIsNegative(false);
-    } else if (deltaNumber === 0.0) {
+    if (index !== -1) {
+      const lastSevenDays = weights.slice(index).map((e) => e.weight);
+
+      const deltaNumber = lastSevenDays.slice(-1)[0] - lastSevenDays[0];
+
+      if (deltaNumber >= 0) {
+        deltaString = `+${deltaNumber.toFixed(2)}Kg`;
+        setIsNegative(false);
+      } else {
+        deltaString = `${deltaNumber.toFixed(2)}Kg`;
+        setIsNegative(true);
+      }
+    } else {
       deltaString = '--';
       setIsNegative(false);
-    } else {
-      deltaString = `${deltaNumber.toFixed(2)}Kg`;
-      setIsNegative(true);
     }
 
     setSevenDaysDelta(deltaString);
