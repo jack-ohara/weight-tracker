@@ -44,7 +44,7 @@ const SubmitButton = styled.input`
 `;
 
 export const WeightInputForm = () => {
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date().toISOString().substr(0, 10));
   const [weight, setWeight] = useState();
 
   const onSubmit = (event) => {
