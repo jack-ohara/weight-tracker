@@ -29,8 +29,8 @@ const App = () => {
 
       <WeightInputForm />
 
-      <Stats />
       <Graphs />
+      <Stats />
     </Container>
   );
 };

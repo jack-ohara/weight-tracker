@@ -30,6 +30,7 @@ export const AllWeightsGraph = () => {
 
   return (
     <GraphContainer>
+      <h3>All Weights</h3>
       <LineChart width={360} height={200} data={GetWeights()}>
         <Line type="monotone" dataKey="weight" stroke="#8884d8" />
         <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
