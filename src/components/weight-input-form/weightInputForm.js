@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { AddNewWeight } from '../../data-acccess/weightAccess';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { AddNewWeight } from "../../data-acccess/weightAccess";
 
 const InputForm = styled.form`
   flex-grow: 5;
@@ -41,6 +41,17 @@ const NumberInput = styled.input`
 const SubmitButton = styled.input`
   font-size: 0.75em;
   margin-top: 0.5em;
+  border-radius: 4px;
+  text-decoration: none;
+  background: #eee;
+  border: 0;
+  padding: 0.4rem;
+  transition: background 100ms ease-in-out;
+
+  &:hover,
+  &:focus {
+    background: #bbb;
+  }
 `;
 
 export const WeightInputForm = () => {
