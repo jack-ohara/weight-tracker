@@ -39,6 +39,7 @@ const NumberInput = styled.input`
 `;
 
 const SubmitButton = styled.input`
+  -webkit-appearance: button;
   font-size: 0.75em;
   margin-top: 0.5em;
   border-radius: 4px;
