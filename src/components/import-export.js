@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
 import { GetWeights, SetWeights } from "../data-acccess/weightAccess";
-import Button, { InputButton } from "./Button";
+import Button from "./Button";
 
 const Container = styled.div`
   display: flex;
