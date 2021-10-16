@@ -1,11 +1,11 @@
 export const SetWeights = (weights) => {
   const sortedWeights = sortData(weights);
 
-  localStorage.setItem('weights', JSON.stringify(sortedWeights));
+  localStorage.setItem("weights", JSON.stringify(sortedWeights));
 };
 
 export const GetWeights = () => {
-  const weights = JSON.parse(localStorage.getItem('weights')) ?? [];
+  const weights = JSON.parse(localStorage.getItem("weights")) ?? [];
 
   return cleanData(weights);
 };

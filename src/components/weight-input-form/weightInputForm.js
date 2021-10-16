@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { InputButton } from "../Button";
 import { AddNewWeight } from "../../data-acccess/weightAccess";
 
 const InputForm = styled.form`
@@ -36,23 +37,6 @@ const NumberInput = styled.input`
   border-radius: 3px;
   border: 1px solid black;
   margin-right: 0.5em;
-`;
-
-const SubmitButton = styled.input`
-  -webkit-appearance: button;
-  font-size: 0.75em;
-  margin-top: 0.5em;
-  border-radius: 4px;
-  text-decoration: none;
-  background: #eee;
-  border: 0;
-  padding: 0.4rem;
-  transition: background 100ms ease-in-out;
-
-  &:hover,
-  &:focus {
-    background: #bbb;
-  }
 `;
 
 export const WeightInputForm = () => {
@@ -92,7 +76,7 @@ export const WeightInputForm = () => {
         </WeightSelectArea>
       </InputArea>
 
-      <SubmitButton type="Submit" value="Submit" readOnly />
+      <InputButton type="Submit" value="Submit" readOnly />
     </InputForm>
   );
 };
