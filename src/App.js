@@ -1,9 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
-import './App.css';
-import { Graphs } from './components/graphs/graphs';
-import { Stats } from './components/stats/stats';
-import { WeightInputForm } from './components/weight-input-form/weightInputForm';
+import React from "react";
+import styled from "styled-components";
+import "./App.css";
+import { Graphs } from "./components/graphs/graphs";
+import { ImportExport } from "./components/import-export";
+import { Stats } from "./components/stats/stats";
+import { WeightInputForm } from "./components/weight-input-form/weightInputForm";
 
 const Container = styled.div`
   text-align: center;
@@ -31,6 +32,8 @@ const App = () => {
 
       <Graphs />
       <Stats />
+
+      <ImportExport />
     </Container>
   );
 };
